@@ -143,7 +143,7 @@ contactForm.addEventListener('submit', async (e) => {
   }
 });
 
-document.querySelectorAll('.card, .split, .ref-pills, .contact-wrap, .block-head').forEach((el, i) => {
+document.querySelectorAll('.card, .split, .ref-pills, .contact-wrap, .block-head, .seo-text, .faq-list').forEach((el, i) => {
   el.classList.add('reveal');
   el.style.transitionDelay = `${(i % 4) * 0.07}s`;
   new IntersectionObserver(
