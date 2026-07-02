@@ -27,7 +27,7 @@ const heroContent = {
 const heroTitle = document.getElementById('hero-title');
 const heroDesc = document.getElementById('hero-desc');
 const heroCta = document.getElementById('hero-cta');
-const heroVideo = document.querySelector('.hero-video');
+const heroSlides = document.querySelectorAll('.hero-slide');
 const heroTabs = document.querySelectorAll('.hero-tab');
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
@@ -44,30 +44,8 @@ function switchHero(target) {
   heroTitle.innerHTML = c.title;
   heroDesc.textContent = c.desc;
   heroCta.textContent = c.cta;
+  heroSlides.forEach((s) => s.classList.toggle('active', s.dataset.slide === target));
   heroTabs.forEach((t) => t.classList.toggle('active', t.dataset.target === target));
-}
-
-if (heroVideo && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const heroMedia = heroVideo.closest('.hero-media');
-  heroVideo.muted = true;
-  heroVideo.defaultMuted = true;
-  heroVideo.setAttribute('muted', '');
-
-  const startHeroVideo = () => {
-    heroMedia?.classList.add('is-ready');
-    heroVideo.play().catch(() => {});
-  };
-
-  if (heroVideo.readyState >= 2) {
-    startHeroVideo();
-  } else {
-    heroVideo.addEventListener('loadeddata', startHeroVideo, { once: true });
-    heroVideo.addEventListener('canplay', startHeroVideo, { once: true });
-  }
-
-  document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) heroVideo.play().catch(() => {});
-  });
 }
 
 heroTabs.forEach((tab) => {
@@ -165,7 +143,7 @@ contactForm.addEventListener('submit', async (e) => {
   }
 });
 
-document.querySelectorAll('.card, .split, .ref-pills, .contact-wrap, .block-head, .seo-text, .faq-list, .video-frame').forEach((el, i) => {
+document.querySelectorAll('.card, .split, .ref-pills, .contact-wrap, .block-head, .seo-text, .faq-list').forEach((el, i) => {
   el.classList.add('reveal');
   el.style.transitionDelay = `${(i % 4) * 0.07}s`;
   new IntersectionObserver(

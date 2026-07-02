@@ -24,7 +24,7 @@
   <meta name="twitter:description" content="Spălare panouri fotovoltaice și curățări industriale în România. Messersi ROBOKLIN, rafinării, parcuri solare. Din 2001.">
   <meta name="twitter:image" content="https://www.womaservices.ro/assets/hero-solar.jpg">
   <link rel="icon" href="assets/logo-icon.svg" type="image/svg+xml">
-  <link rel="preload" as="video" href="assets/videos/woma.mp4" type="video/mp4">
+  <link rel="preload" as="image" href="assets/hero-solar.jpg">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -111,7 +111,6 @@
       <ul class="nav-links">
         <li><a href="#servicii">Servicii</a></li>
         <li><a href="#echipament">Echipament</a></li>
-        <li><a href="#video">Video</a></li>
         <li><a href="#referinte">Referințe</a></li>
         <li><a href="#intrebari">Întrebări</a></li>
         <li><a href="https://wa.me/40722234114?text=Bun%C4%83%20ziua%2C%20a%C8%99%20dori%20o%20ofert%C4%83%20pentru..." class="nav-wa" target="_blank" rel="noopener">WhatsApp</a></li>
@@ -123,20 +122,15 @@
 
   <main>
     <section class="hero">
-      <div class="hero-media" aria-hidden="true">
-        <img src="assets/hero-solar.jpg" alt="" class="hero-fallback-img" width="1920" height="1080" fetchpriority="high">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="auto"
-          poster="assets/hero-solar.jpg"
-        >
-          <source src="assets/videos/woma.mp4" type="video/mp4">
-        </video>
-        <div class="hero-overlay"></div>
+      <div class="hero-slider">
+        <div class="hero-slide active" data-slide="solar">
+          <img src="assets/hero-solar.jpg" alt="Spălare panouri fotovoltaice cu utilaj Messersi ROBOKLIN" class="hero-slide-img" width="1920" height="1080" fetchpriority="high">
+          <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-slide" data-slide="industrial">
+          <img src="assets/hero-refinery.jpg" alt="Curățare industrială rafinărie la presiune înaltă" class="hero-slide-img" width="1920" height="1080" loading="lazy">
+          <div class="hero-overlay"></div>
+        </div>
       </div>
 
       <div class="container hero-inner">
@@ -240,30 +234,6 @@
             <img src="assets/g11.jpg" alt="Pompe URACA" loading="lazy">
             <img src="assets/g5.jpg" alt="Cosire parc solar" loading="lazy">
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="video">
-      <div class="container">
-        <header class="block-head">
-          <h2>Woma Ecoserv la lucru</h2>
-          <p>Utilaje în acțiune — spălare panouri fotovoltaice și operațiuni industriale.</p>
-        </header>
-        <div class="video-frame">
-          <video
-            class="video-player"
-            controls
-            playsinline
-            preload="metadata"
-            poster="assets/g1.jpg"
-            width="1920"
-            height="1080"
-            aria-label="Filmuleț prezentare Woma Ecoserv — echipamente la lucru"
-          >
-            <source src="assets/videos/woma.mp4" type="video/mp4">
-            Browserul tău nu suportă redarea video. <a href="assets/videos/woma.mp4">Descarcă filmulețul</a>.
-          </video>
         </div>
       </div>
     </section>
@@ -413,7 +383,6 @@
       <nav class="footer-nav" aria-label="Linkuri footer">
         <a href="#servicii">Servicii</a>
         <a href="#echipament">Echipament</a>
-        <a href="#video">Video</a>
         <a href="#referinte">Referințe</a>
         <a href="#intrebari">Întrebări</a>
         <a href="#contact">Contact</a>
