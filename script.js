@@ -75,9 +75,9 @@ navLinks.querySelectorAll('a').forEach((a) => {
   });
 });
 
-document.querySelectorAll('.card-link[data-service]').forEach((link) => {
-  link.addEventListener('click', () => {
-    serviceSelect.value = link.dataset.service;
+document.querySelectorAll('[data-service]').forEach((el) => {
+  el.addEventListener('click', () => {
+    serviceSelect.value = el.dataset.service;
   });
 });
 
@@ -148,7 +148,7 @@ contactForm.addEventListener('submit', async (e) => {
   }
 });
 
-const revealSelectors = '.card, .split, .ref-grid, .contact-wrap, .block-head, .about-cards, .faq-list, .equip-cards, .hero-panel';
+const revealSelectors = '.service-card, .split, .client-grid, .action-gallery, .contact-wrap, .block-head, .about-cards, .faq-list, .equip-cards, .hero-panel';
 
 document.querySelectorAll(revealSelectors).forEach((el, i) => {
   el.classList.add('reveal');
