@@ -15,12 +15,12 @@ const heroContent = {
   solar: {
     title: 'Spălare panouri fotovoltaice de <em>clasă industrială</em>',
     desc: 'Utilaj Messersi ROBOKLIN, perie 3,5 m cu senzori, apă demineralizată. Randament crescut cu până la 40%.',
-    cta: 'Ofertă parc solar',
+    cta: 'Cere ofertă gratuită',
   },
   industrial: {
     title: 'Curățare industrială <em>6 – 2800 bari</em>',
     desc: 'Pompe URACA și HAMMELMANN pentru rafinării și instalații petrochimice. Lukoil, OMV Petrom, Rompetrol.',
-    cta: 'Ofertă industrială',
+    cta: 'Cere ofertă gratuită',
   },
 };
 
@@ -31,7 +31,7 @@ const heroCta = document.getElementById('hero-cta');
 const heroSlides = document.querySelectorAll('.hero-slide');
 const heroTabs = document.querySelectorAll('.hero-tab');
 const navToggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelector('.nav-links');
+const navMenu = document.getElementById('nav-menu');
 const contactForm = document.getElementById('contact-form');
 const submitBtn = document.getElementById('submit-btn');
 const formError = document.getElementById('form-error');
@@ -63,21 +63,32 @@ window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 20);
 }, { passive: true });
 
+function closeNav() {
+  navMenu.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', 'false');
+}
+
 navToggle.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
+  const open = navMenu.classList.toggle('open');
   navToggle.setAttribute('aria-expanded', open);
 });
 
-navLinks.querySelectorAll('a').forEach((a) => {
-  a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', 'false');
-  });
+navMenu.querySelectorAll('a').forEach((a) => {
+  a.addEventListener('click', closeNav);
 });
 
 document.querySelectorAll('[data-service]').forEach((el) => {
   el.addEventListener('click', () => {
-    serviceSelect.value = el.dataset.service;
+    if (serviceSelect) serviceSelect.value = el.dataset.service;
+  });
+});
+
+document.querySelectorAll('.faq-accordion .faq-item').forEach((item) => {
+  item.addEventListener('toggle', () => {
+    if (!item.open) return;
+    document.querySelectorAll('.faq-accordion .faq-item').forEach((other) => {
+      if (other !== item) other.open = false;
+    });
   });
 });
 
@@ -148,17 +159,17 @@ contactForm.addEventListener('submit', async (e) => {
   }
 });
 
-const revealSelectors = '.service-card, .split, .client-grid, .action-gallery, .contact-wrap, .block-head, .about-cards, .faq-list, .equip-cards, .hero-panel';
+const revealSelectors = '.premium-card, .premium-grid, .equip-showcase, .client-grid, .action-gallery, .contact-wrap, .block-head, .faq-accordion, .hero-stats-bar';
 
 document.querySelectorAll(revealSelectors).forEach((el, i) => {
   el.classList.add('reveal');
-  el.style.transitionDelay = `${(i % 4) * 0.07}s`;
+  el.style.transitionDelay = `${(i % 4) * 0.08}s`;
   new IntersectionObserver(
     ([entry]) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
       }
     },
-    { threshold: 0.12 }
+    { threshold: 0.1 }
   ).observe(el);
 });
