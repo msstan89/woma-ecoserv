@@ -65,6 +65,7 @@ ul, ol { list-style: none; }
 
 .nav-links a:hover { color: var(--text); }
 
+.nav-wa { color: #25d366 !important; font-weight: 600 !important; }
 .nav-phone { color: var(--green-soft) !important; font-weight: 600 !important; }
 
 .nav-cta {
