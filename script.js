@@ -1,3 +1,5 @@
+document.body.classList.add('js');
+
 const FORM_EMAIL = 'woma_industries@yahoo.com';
 const FORM_ENDPOINT = `https://formsubmit.co/ajax/${FORM_EMAIL}`;
 

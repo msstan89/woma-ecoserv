@@ -576,8 +576,11 @@ ul, ol { list-style: none; }
 .fab-wa { background: #25d366; color: #fff; }
 .fab-phone { background: var(--green); color: #052e16; }
 
+/* Hidden elements — CSS display must not override HTML hidden */
+[hidden] { display: none !important; }
+
 /* Modal */
-.modal {
+.modal:not([hidden]) {
   position: fixed;
   inset: 0;
   z-index: 200;
@@ -619,14 +622,19 @@ ul, ol { list-style: none; }
 
 .modal-box p { color: var(--muted); font-size: 0.9rem; margin-bottom: 24px; }
 
-/* Reveal */
+/* Reveal — subtle fade-in, visible by default if JS fails */
 .reveal {
-  opacity: 0;
-  transform: translateY(16px);
+  opacity: 1;
+  transform: none;
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.reveal.visible { opacity: 1; transform: none; }
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.js .reveal.visible { opacity: 1; transform: none; }
 
 /* Responsive */
 @media (max-width: 900px) {
