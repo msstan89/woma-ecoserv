@@ -24,6 +24,7 @@ const heroContent = {
   },
 };
 
+const header = document.getElementById('header');
 const heroTitle = document.getElementById('hero-title');
 const heroDesc = document.getElementById('hero-desc');
 const heroCta = document.getElementById('hero-cta');
@@ -57,6 +58,10 @@ setInterval(() => {
   autoIdx = (autoIdx + 1) % 2;
   switchHero(autoIdx === 0 ? 'solar' : 'industrial');
 }, 9000);
+
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
 
 navToggle.addEventListener('click', () => {
   const open = navLinks.classList.toggle('open');
@@ -143,7 +148,9 @@ contactForm.addEventListener('submit', async (e) => {
   }
 });
 
-document.querySelectorAll('.card, .split, .ref-pills, .contact-wrap, .block-head, .seo-text, .faq-list').forEach((el, i) => {
+const revealSelectors = '.card, .split, .ref-grid, .contact-wrap, .block-head, .about-cards, .faq-list, .equip-cards, .hero-panel';
+
+document.querySelectorAll(revealSelectors).forEach((el, i) => {
   el.classList.add('reveal');
   el.style.transitionDelay = `${(i % 4) * 0.07}s`;
   new IntersectionObserver(
