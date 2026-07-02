@@ -194,29 +194,44 @@
           <p class="text-gray-500 text-lg">Trei domenii. Un singur partener de încredere pentru industrie și energie verde.</p>
         </div>
         <div class="grid md:grid-cols-3 gap-8">
-          <article class="card-hover bg-white rounded-2xl p-8 border border-gray-100 shadow-card flex flex-col">
-            <div class="w-16 h-16 grid place-items-center bg-accent-soft text-accent rounded-2xl mb-6">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2"/></svg>
+          <article class="card-hover bg-white rounded-2xl border border-gray-100 shadow-card flex flex-col overflow-hidden">
+            <div class="service-card-img">
+              <img src="assets/hero-solar.jpg" alt="Spălare panouri fotovoltaice" loading="lazy">
+            </div>
+            <div class="p-8 flex flex-col flex-1">
+            <div class="w-14 h-14 grid place-items-center bg-accent-soft text-accent rounded-2xl mb-5 -mt-10 relative z-10 border-4 border-white shadow-sm">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2"/></svg>
             </div>
             <h3 class="font-display text-xl font-bold text-primary mb-3">Parcuri fotovoltaice</h3>
             <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-1">Spălare panouri cu ROBOKLIN, apă demineralizată, cosire vegetație — randament cu până la +40%.</p>
             <a href="#contact" data-service="solar" class="btn-offer inline-flex justify-center px-6 py-3 bg-accent text-white text-sm font-bold rounded-xl shadow-accent hover:bg-accent-dark transition">Cere ofertă</a>
+            </div>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-8 border border-gray-100 shadow-card flex flex-col">
-            <div class="w-16 h-16 grid place-items-center bg-gray-100 text-primary rounded-2xl mb-6">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <article class="card-hover bg-white rounded-2xl border border-gray-100 shadow-card flex flex-col overflow-hidden">
+            <div class="service-card-img">
+              <img src="assets/hero-refinery.jpg" alt="Curățare rafinărie industrială" loading="lazy">
+            </div>
+            <div class="p-8 flex flex-col flex-1">
+            <div class="w-14 h-14 grid place-items-center bg-gray-100 text-primary rounded-2xl mb-5 -mt-10 relative z-10 border-4 border-white shadow-sm">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
             </div>
             <h3 class="font-display text-xl font-bold text-primary mb-3">Rafinării & petrochimie</h3>
             <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-1">Curățare la 100–2800 bari: conducte, schimbătoare de căldură, rezervoare. Fără chimicale agresive.</p>
             <a href="#contact" data-service="refinery" class="btn-offer inline-flex justify-center px-6 py-3 bg-accent text-white text-sm font-bold rounded-xl shadow-accent hover:bg-accent-dark transition">Cere ofertă</a>
+            </div>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-8 border border-gray-100 shadow-card flex flex-col">
-            <div class="w-16 h-16 grid place-items-center bg-accent-soft text-accent rounded-2xl mb-6">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-11a8 8 0 0116 0c0 5-4 8-8 11z"/></svg>
+          <article class="card-hover bg-white rounded-2xl border border-gray-100 shadow-card flex flex-col overflow-hidden">
+            <div class="service-card-img">
+              <img src="assets/g5.jpg" alt="Cosire și mentenanță parcuri solare" class="img-cover-right" loading="lazy">
+            </div>
+            <div class="p-8 flex flex-col flex-1">
+            <div class="w-14 h-14 grid place-items-center bg-accent-soft text-accent rounded-2xl mb-5 -mt-10 relative z-10 border-4 border-white shadow-sm">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-11a8 8 0 0116 0c0 5-4 8-8 11z"/></svg>
             </div>
             <h3 class="font-display text-xl font-bold text-primary mb-3">Spații verzi & municipal</h3>
             <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-1">Cosire la scară industrială, întreținere vegetație parcuri solare, curățare canalizări & stații epurare.</p>
             <a href="#contact" data-service="mowing" class="btn-offer inline-flex justify-center px-6 py-3 bg-accent text-white text-sm font-bold rounded-xl shadow-accent hover:bg-accent-dark transition">Cere ofertă</a>
+            </div>
           </article>
         </div>
       </div>
@@ -230,7 +245,40 @@
           <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-primary mt-3 mb-4">Echipament propriu</h2>
           <p class="text-gray-500 text-lg">Utilaje premium, fără subcontractori — livrare rapidă la standard industrial.</p>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div class="photo-gallery mb-14">
+          <figure class="photo-gallery-hero group">
+            <img src="assets/g7.jpg" alt="Cosire vegetație între rânduri de panouri fotovoltaice" class="img-cover-center" loading="lazy">
+            <figcaption>
+              <span class="photo-tag">Parcuri solare</span>
+              <strong>ROBOKLIN 25</strong> — mentenanță vegetație la scară industrială
+            </figcaption>
+          </figure>
+          <div class="photo-gallery-row">
+            <figure class="photo-gallery-item group">
+              <img src="assets/g1.jpg" alt="Montaj și curățare panouri fotovoltaice" class="img-cover-center" loading="lazy">
+              <figcaption>
+                <span class="photo-tag">Instalații</span>
+                Lucrări pe parcuri fotovoltaice
+              </figcaption>
+            </figure>
+            <figure class="photo-gallery-item group">
+              <img src="assets/g11.jpg" alt="Tractor de întreținere parc solar" class="img-cover-center" loading="lazy">
+              <figcaption>
+                <span class="photo-tag">Flotă</span>
+                Echipamente proprii de mentenanță
+              </figcaption>
+            </figure>
+            <figure class="photo-gallery-item group">
+              <img src="assets/g5.jpg" alt="Tratament vegetație sub structuri solare" class="img-cover-right" loading="lazy">
+              <figcaption>
+                <span class="photo-tag">Mentenanță</span>
+                Întreținere spații verzi & parcuri
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <article class="card-hover bg-surface rounded-2xl p-6 border border-gray-100 shadow-card">
             <div class="w-14 h-14 grid place-items-center bg-accent-soft text-accent rounded-xl mb-4"><svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2"/></svg></div>
             <h3 class="font-display font-bold text-primary mb-1">ROBOKLIN 25</h3>
@@ -251,17 +299,6 @@
             <h3 class="font-display font-bold text-primary mb-1">AQUAWELT ECOMIX</h3>
             <p class="text-gray-500 text-sm">1600 l/h demineralizare</p>
           </article>
-        </div>
-        <!-- Imagini echipamente -->
-        <div class="grid lg:grid-cols-3 gap-4">
-          <div class="lg:col-span-2 rounded-2xl overflow-hidden shadow-card-hover">
-            <img src="assets/g1.jpg" alt="Messersi ROBOKLIN curățând panouri fotovoltaice" class="w-full h-72 lg:h-80 object-cover hover:scale-[1.02] transition duration-500" loading="lazy">
-          </div>
-          <div class="grid grid-rows-3 gap-4">
-            <img src="assets/g7.jpg" alt="Echipament ROBOKLIN" class="w-full h-full object-cover rounded-2xl shadow-card hover:scale-[1.03] transition duration-300" loading="lazy">
-            <img src="assets/g11.jpg" alt="Pompe URACA presiune înaltă" class="w-full h-full object-cover rounded-2xl shadow-card hover:scale-[1.03] transition duration-300" loading="lazy">
-            <img src="assets/g5.jpg" alt="Cosire parc solar" class="w-full h-full object-cover rounded-2xl shadow-card hover:scale-[1.03] transition duration-300" loading="lazy">
-          </div>
         </div>
       </div>
     </section>

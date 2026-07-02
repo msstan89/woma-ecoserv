@@ -63,3 +63,130 @@
 
 /* Hidden utility (Tailwind CDN may not have all states) */
 .hidden { display: none !important; }
+
+/* Service card images */
+.service-card-img {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #eef1f6;
+}
+.service-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+.card-hover:hover .service-card-img img {
+  transform: scale(1.05);
+}
+
+/* Equipment photo gallery */
+.photo-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.photo-gallery-hero {
+  position: relative;
+  margin: 0;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: #0F2C59;
+  box-shadow: 0 20px 50px rgba(15, 44, 89, 0.13);
+}
+
+.photo-gallery-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.photo-gallery-hero:hover img {
+  transform: scale(1.03);
+}
+
+.photo-gallery-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.photo-gallery-item {
+  position: relative;
+  margin: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #eef1f6;
+  box-shadow: 0 4px 24px rgba(15, 44, 89, 0.08);
+}
+
+.photo-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.img-cover-center { object-position: center center; }
+.img-cover-top { object-position: center 30%; }
+.img-cover-right { object-position: 65% center; }
+
+.photo-gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.photo-gallery-hero figcaption,
+.photo-gallery-item figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(to top, rgba(15, 44, 89, 0.88) 0%, transparent 100%);
+  color: #fff;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.photo-gallery-hero figcaption strong {
+  display: block;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+}
+
+.photo-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #00c48c;
+  background: rgba(0, 168, 120, 0.2);
+  padding: 0.2rem 0.55rem;
+  border-radius: 100px;
+  margin-bottom: 0.35rem;
+}
+
+@media (max-width: 768px) {
+  .photo-gallery-hero {
+    aspect-ratio: 16 / 10;
+  }
+  .photo-gallery-row {
+    grid-template-columns: 1fr;
+  }
+  .photo-gallery-item {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1024px) {
+  .photo-gallery-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
