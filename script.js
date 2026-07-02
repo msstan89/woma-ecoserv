@@ -48,14 +48,25 @@ function switchHero(target) {
 }
 
 if (heroVideo && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const playHeroVideo = () => {
-    heroVideo.play().then(() => {
-      heroVideo.classList.add('is-playing');
-    }).catch(() => {});
+  const heroMedia = heroVideo.closest('.hero-media');
+  heroVideo.muted = true;
+  heroVideo.defaultMuted = true;
+  heroVideo.setAttribute('muted', '');
+
+  const startHeroVideo = () => {
+    heroMedia?.classList.add('is-ready');
+    heroVideo.play().catch(() => {});
   };
-  playHeroVideo();
+
+  if (heroVideo.readyState >= 2) {
+    startHeroVideo();
+  } else {
+    heroVideo.addEventListener('loadeddata', startHeroVideo, { once: true });
+    heroVideo.addEventListener('canplay', startHeroVideo, { once: true });
+  }
+
   document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) playHeroVideo();
+    if (!document.hidden) heroVideo.play().catch(() => {});
   });
 }
 
