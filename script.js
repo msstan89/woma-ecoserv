@@ -1,5 +1,3 @@
-document.body.classList.add('js');
-
 const FORM_EMAIL = 'woma_industries@yahoo.com';
 const FORM_ENDPOINT = `https://formsubmit.co/ajax/${FORM_EMAIL}`;
 
@@ -13,25 +11,22 @@ const SERVICE_LABELS = {
 
 const heroContent = {
   solar: {
-    title: 'Spălare panouri fotovoltaice de <em>clasă industrială</em>',
+    title: 'Spălare panouri fotovoltaice de <em class="not-italic text-accent">clasă industrială</em>',
     desc: 'Utilaj Messersi ROBOKLIN, perie 3,5 m cu senzori, apă demineralizată. Randament crescut cu până la 40%.',
-    cta: 'Cere ofertă gratuită',
   },
   industrial: {
-    title: 'Curățare industrială <em>6 – 2800 bari</em>',
+    title: 'Curățare industrială <em class="not-italic text-accent">6 – 2800 bari</em>',
     desc: 'Pompe URACA și HAMMELMANN pentru rafinării și instalații petrochimice. Lukoil, OMV Petrom, Rompetrol.',
-    cta: 'Cere ofertă gratuită',
   },
 };
 
 const header = document.getElementById('header');
 const heroTitle = document.getElementById('hero-title');
 const heroDesc = document.getElementById('hero-desc');
-const heroCta = document.getElementById('hero-cta');
 const heroSlides = document.querySelectorAll('.hero-slide');
 const heroTabs = document.querySelectorAll('.hero-tab');
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.getElementById('nav-menu');
+const navToggle = document.getElementById('nav-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
 const contactForm = document.getElementById('contact-form');
 const submitBtn = document.getElementById('submit-btn');
 const formError = document.getElementById('form-error');
@@ -44,14 +39,11 @@ function switchHero(target) {
   if (!c) return;
   heroTitle.innerHTML = c.title;
   heroDesc.textContent = c.desc;
-  heroCta.textContent = c.cta;
   heroSlides.forEach((s) => s.classList.toggle('active', s.dataset.slide === target));
   heroTabs.forEach((t) => t.classList.toggle('active', t.dataset.target === target));
 }
 
-heroTabs.forEach((tab) => {
-  tab.addEventListener('click', () => switchHero(tab.dataset.target));
-});
+heroTabs.forEach((tab) => tab.addEventListener('click', () => switchHero(tab.dataset.target)));
 
 let autoIdx = 0;
 setInterval(() => {
@@ -63,18 +55,16 @@ window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 20);
 }, { passive: true });
 
-function closeNav() {
-  navMenu.classList.remove('open');
-  navToggle.setAttribute('aria-expanded', 'false');
-}
-
-navToggle.addEventListener('click', () => {
-  const open = navMenu.classList.toggle('open');
-  navToggle.setAttribute('aria-expanded', open);
+navToggle?.addEventListener('click', () => {
+  const open = mobileMenu.classList.toggle('hidden');
+  navToggle.setAttribute('aria-expanded', !open);
 });
 
-navMenu.querySelectorAll('a').forEach((a) => {
-  a.addEventListener('click', closeNav);
+document.querySelectorAll('.mobile-link').forEach((a) => {
+  a.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+    navToggle.setAttribute('aria-expanded', 'false');
+  });
 });
 
 document.querySelectorAll('[data-service]').forEach((el) => {
@@ -83,10 +73,10 @@ document.querySelectorAll('[data-service]').forEach((el) => {
   });
 });
 
-document.querySelectorAll('.faq-accordion .faq-item').forEach((item) => {
+document.querySelectorAll('#faq-accordion .faq-item').forEach((item) => {
   item.addEventListener('toggle', () => {
     if (!item.open) return;
-    document.querySelectorAll('.faq-accordion .faq-item').forEach((other) => {
+    document.querySelectorAll('#faq-accordion .faq-item').forEach((other) => {
       if (other !== item) other.open = false;
     });
   });
@@ -94,28 +84,25 @@ document.querySelectorAll('.faq-accordion .faq-item').forEach((item) => {
 
 function setLoading(loading) {
   submitBtn.disabled = loading;
-  submitBtn.querySelector('.btn-text').hidden = loading;
-  submitBtn.querySelector('.btn-loading').hidden = !loading;
+  submitBtn.querySelector('.btn-text').classList.toggle('hidden', loading);
+  submitBtn.querySelector('.btn-loading').classList.toggle('hidden', !loading);
 }
 
-function showModal() {
-  successModal.hidden = false;
-  document.body.style.overflow = 'hidden';
-}
-
-function hideModal() {
-  successModal.hidden = true;
+modalClose?.addEventListener('click', () => {
+  successModal.classList.add('hidden');
   document.body.style.overflow = '';
-}
-
-modalClose.addEventListener('click', hideModal);
-successModal.addEventListener('click', (e) => {
-  if (e.target === successModal) hideModal();
 });
 
-contactForm.addEventListener('submit', async (e) => {
+successModal?.addEventListener('click', (e) => {
+  if (e.target === successModal) {
+    successModal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+});
+
+contactForm?.addEventListener('submit', async (e) => {
   e.preventDefault();
-  formError.hidden = true;
+  formError.classList.add('hidden');
 
   if (contactForm.querySelector('[name="_honey"]')?.value) return;
 
@@ -123,53 +110,32 @@ contactForm.addEventListener('submit', async (e) => {
   const serviceKey = fd.get('service');
   const serviceLabel = SERVICE_LABELS[serviceKey] || serviceKey;
 
-  const body = {
-    name: fd.get('name'),
-    phone: fd.get('phone'),
-    email: fd.get('email'),
-    service: serviceLabel,
-    message: fd.get('message'),
-    _subject: `Solicitare nouă — ${serviceLabel} — Woma Ecoserv`,
-    _template: 'table',
-    _captcha: 'false',
-  };
-
   setLoading(true);
 
   try {
     const res = await fetch(FORM_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(body),
+      body: JSON.stringify({
+        name: fd.get('name'),
+        phone: fd.get('phone'),
+        email: fd.get('email'),
+        service: serviceLabel,
+        message: fd.get('message'),
+        _subject: `Solicitare nouă — ${serviceLabel} — Woma Ecoserv`,
+        _template: 'table',
+        _captcha: 'false',
+      }),
     });
-
     const data = await res.json();
-
-    if (!res.ok || data.success === false) {
-      throw new Error(data.message || 'Eroare la trimitere');
-    }
-
+    if (!res.ok || data.success === false) throw new Error();
     contactForm.reset();
-    showModal();
+    successModal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
   } catch {
-    formError.textContent = 'Nu am putut trimite mesajul. Sună-ne la 0722 234 114 sau scrie la woma_industries@yahoo.com';
-    formError.hidden = false;
+    formError.textContent = 'Nu am putut trimite mesajul. Sună-ne la 0722 234 114.';
+    formError.classList.remove('hidden');
   } finally {
     setLoading(false);
   }
-});
-
-const revealSelectors = '.premium-card, .premium-grid, .equip-showcase, .client-grid, .action-gallery, .contact-wrap, .block-head, .faq-accordion, .hero-stats-bar';
-
-document.querySelectorAll(revealSelectors).forEach((el, i) => {
-  el.classList.add('reveal');
-  el.style.transitionDelay = `${(i % 4) * 0.08}s`;
-  new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    },
-    { threshold: 0.1 }
-  ).observe(el);
 });
