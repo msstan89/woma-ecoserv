@@ -24,7 +24,7 @@
   <meta name="twitter:description" content="Spălare panouri fotovoltaice și curățări industriale în România. Messersi ROBOKLIN, rafinării, parcuri solare. Din 2001.">
   <meta name="twitter:image" content="https://www.womaservices.ro/assets/hero-solar.jpg">
   <link rel="icon" href="assets/logo-icon.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="assets/hero-solar.jpg">
+  <link rel="preload" as="video" href="assets/videos/woma.mp4" type="video/mp4">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -123,15 +123,21 @@
 
   <main>
     <section class="hero">
-      <div class="hero-slider">
-        <div class="hero-slide active" data-slide="solar">
-          <img src="assets/hero-solar.jpg" alt="Spălare panouri fotovoltaice cu utilaj Messersi ROBOKLIN" class="hero-slide-img" width="1920" height="1080" fetchpriority="high">
-          <div class="hero-overlay"></div>
-        </div>
-        <div class="hero-slide" data-slide="industrial">
-          <img src="assets/hero-refinery.jpg" alt="Curățare industrială rafinărie la presiune înaltă" class="hero-slide-img" width="1920" height="1080" loading="lazy">
-          <div class="hero-overlay"></div>
-        </div>
+      <div class="hero-media" aria-hidden="true">
+        <img src="assets/hero-solar.jpg" alt="" class="hero-fallback-img" width="1920" height="1080" fetchpriority="high">
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="assets/hero-solar.jpg"
+          disablePictureInPicture
+        >
+          <source src="assets/videos/woma.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
       </div>
 
       <div class="container hero-inner">

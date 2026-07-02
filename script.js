@@ -27,7 +27,7 @@ const heroContent = {
 const heroTitle = document.getElementById('hero-title');
 const heroDesc = document.getElementById('hero-desc');
 const heroCta = document.getElementById('hero-cta');
-const heroSlides = document.querySelectorAll('.hero-slide');
+const heroVideo = document.querySelector('.hero-video');
 const heroTabs = document.querySelectorAll('.hero-tab');
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
@@ -44,8 +44,19 @@ function switchHero(target) {
   heroTitle.innerHTML = c.title;
   heroDesc.textContent = c.desc;
   heroCta.textContent = c.cta;
-  heroSlides.forEach((s) => s.classList.toggle('active', s.dataset.slide === target));
   heroTabs.forEach((t) => t.classList.toggle('active', t.dataset.target === target));
+}
+
+if (heroVideo && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const playHeroVideo = () => {
+    heroVideo.play().then(() => {
+      heroVideo.classList.add('is-playing');
+    }).catch(() => {});
+  };
+  playHeroVideo();
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) playHeroVideo();
+  });
 }
 
 heroTabs.forEach((tab) => {
